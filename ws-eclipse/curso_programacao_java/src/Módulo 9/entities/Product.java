@@ -2,7 +2,7 @@ package entities;
 
 public class Product {
 	
-	private String name;
+	String name; // dessa forma não pode ser acessado por classes de pacotes diferentes e sim iguais
 	private double price;
 	private int quantity;
 	
@@ -23,26 +23,26 @@ public class Product {
 		this.price = price;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	public String getName() {
 		return name;
 	}
-	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public double getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
 	
-	public int getQuantity() {
+	public double getQuantity() {
 		return quantity;
 	}
-	
+
 	public double totalValueInStock() {
 		return this.price * this.quantity;
 	}
