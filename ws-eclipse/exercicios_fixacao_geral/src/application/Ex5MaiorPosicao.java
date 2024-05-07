@@ -21,6 +21,7 @@ public class Ex5MaiorPosicao {
 		
 		encontrarPosicao(vect, valor);
 		
+		sc.close();
 	}
 	
 	public static void coletarNumeros(Scanner sc, double[] vect) {

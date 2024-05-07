@@ -25,6 +25,7 @@ public class Ex3Alturas {
 		
 		mostrarMenoresDe16(vect);
 		
+		sc.close();
 	}
 	
     public static void coletarDadosUsuario(Scanner sc, Altura[] vect) {

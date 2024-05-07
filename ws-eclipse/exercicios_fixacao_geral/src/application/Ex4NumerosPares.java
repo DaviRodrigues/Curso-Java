@@ -19,6 +19,7 @@ public class Ex4NumerosPares {
 		
 		mostrarNumerosPares(vect);
 
+		sc.close();
 	}
 	
 	public static void coletarNumeros(Scanner sc, int[] vect) {

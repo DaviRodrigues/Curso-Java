@@ -24,6 +24,8 @@ public class Ex2SomaVetor {
 		double sum = somaValores(vect);
 		
 		mediaValores(sum, vect);
+		
+		sc.close();
 	}
 
     public static void coletarNumeros(Scanner sc, double[] vect) {

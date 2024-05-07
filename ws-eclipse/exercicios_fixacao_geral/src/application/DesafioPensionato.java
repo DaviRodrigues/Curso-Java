@@ -24,7 +24,8 @@ public class DesafioPensionato {
 		System.out.println();
 		
 		mostrarDados(vect);
-
+		
+		sc.close();
 	}
 	
 	public static void coletarDados(Scanner sc, Registro[] vect, int rent) {
