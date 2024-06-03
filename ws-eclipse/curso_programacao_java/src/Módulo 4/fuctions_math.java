@@ -31,10 +31,12 @@ public class fuctions_math {
 		System.out.println("Valor absoluto de " + y + " = " + A);
 		System.out.println("Valor absoluto de " + z + " = " + B);
 		
-		double delta = Math.pow(b, 2.0) - 4*a*c;
-		double x1 = (-b + Math.sqrt(delta)) / (2.0 * a);
-		double x2 = (-b - Math.sqrt(delta)) / (2.0 * a);
+		double delta = Math.pow(B, 2.0) - 4*A*C;
+		double x1 = (-B + Math.sqrt(delta)) / (2.0 * A);
+		double x2 = (-B - Math.sqrt(delta)) / (2.0 * A);
 
+		System.out.println(x1);
+		System.out.println(x2);
 	}
 
 }

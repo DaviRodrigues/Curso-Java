@@ -33,6 +33,7 @@ public class Program_ex2 {
 		System.out.println();
 		System.out.print("Updated data: " + data);
 
+		sc.close();
 	}
 
 }

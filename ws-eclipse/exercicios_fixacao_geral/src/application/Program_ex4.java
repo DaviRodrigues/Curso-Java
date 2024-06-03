@@ -23,6 +23,8 @@ public class Program_ex4 {
 		double total = CurrencyConverter.calcTotal(price, dollars);
 		
 		CurrencyConverter.calcImpost(total);
+
+		sc.close();
 	}
 
 }
