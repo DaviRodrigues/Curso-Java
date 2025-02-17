@@ -1,13 +1,17 @@
 package app;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
+=======
+>>>>>>> 3f15b8912e214caffbf983ec3b4011fc2e7dcf61
 import entities.Account;
 import entities.BusinessAccount;
 import entities.SavingsAccount;
 
 public class Program {
+<<<<<<< HEAD
 
 	public static void main(String[] args) {
 		
@@ -31,4 +35,12 @@ public class Program {
 		}
 	}
 
+=======
+	
+	public static void main(String[] args) {
+		
+
+		
+	}
+>>>>>>> 3f15b8912e214caffbf983ec3b4011fc2e7dcf61
 }
