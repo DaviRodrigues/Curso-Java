@@ -14,14 +14,6 @@ public class Reservation {
 	public Reservation() {}
 
 	public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
-		if (roomNumber == null || checkin == null || checkout == null) {
-			throw new NullPointerException("Error: some of the data is null");
-		}
-		
-        if (!checkout.isAfter(checkin)) {
-            throw new IllegalArgumentException("Error in reservation: Check-out date must be after check-in date");
-        }
-		
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -48,12 +40,6 @@ public class Reservation {
 	}
 	
 	public void updateDates(LocalDate checkin, LocalDate checkout) {
-        LocalDate now = LocalDate.now();
-        
-        if (checkin.isBefore(now) || checkout.isBefore(now)) {
-        	throw new IllegalArgumentException("Error in reservation: Reservation dates for update must be future dates");
-        }
-		
 		this.checkin = checkin;
 		this.checkout = checkout;
 	}
