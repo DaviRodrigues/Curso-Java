@@ -8,6 +8,8 @@ public class Reservation {
 	private Integer roomNumber;
 	private LocalDate checkin;
 	private LocalDate checkout;
+	
+	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
 	public Reservation() {}
 
@@ -48,9 +50,9 @@ public class Reservation {
 	    sb.append("Reservation: Room ")
 	      .append(roomNumber)
 	      .append(", check-in: ")
-	      .append(checkin.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+	      .append(checkin.format(dtf))
 	      .append(", check-out: ")
-	      .append(checkout.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+	      .append(checkout.format(dtf))
 	      .append(", ")
 	      .append(duration())
 	      .append(" nights");
