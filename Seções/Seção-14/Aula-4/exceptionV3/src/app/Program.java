@@ -2,7 +2,10 @@ package app;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
+
 import model.entities.Reservation;
 
 public class Program {
@@ -11,26 +14,31 @@ public class Program {
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static void main(String[] args) {
-        System.out.print("Room number: ");
-        int roomNumber = sc.nextInt();
-        sc.nextLine();
-        
-        CheckData checkData;
+    	try {
+            System.out.print("Room number: ");
+            int roomNumber = sc.nextInt();
+            sc.nextLine();
+            
+            CheckData checkData;
 
-        checkData = getCheckDates();
+            checkData = getCheckDates();
 
-        Reservation reservation = new Reservation(roomNumber, checkData.checkin, checkData.checkout);
-        System.out.println(reservation);
+            Reservation reservation = new Reservation(roomNumber, checkData.checkin, checkData.checkout);
+            System.out.println(reservation);
 
-        System.out.println();
-        System.out.println("Enter data to update the reservation");
-        
-        checkData = getCheckDates();
-        
-        reservation.updateDates(checkData.checkin, checkData.checkout);
-        System.out.println(reservation);
-        
-        sc.close();
+            System.out.println();
+            System.out.println("Enter data to update the reservation");
+            
+            checkData = getCheckDates();
+            
+            reservation.updateDates(checkData.checkin, checkData.checkout);
+            System.out.println(reservation);
+    	} catch (Exception e) {
+			System.err.println(e);
+		
+		} finally {
+	        sc.close();
+		}
     }
 
     public static CheckData getCheckDates() {

@@ -19,13 +19,19 @@ public class Program {
 
         checkData = getCheckDates();
 
-        Reservation reservation = new Reservation(roomNumber, checkData.checkin, checkData.checkout);
+        Reservation reservation = new Reservation(roomNumber, checkData.checkin(), checkData.checkout());
         System.out.println(reservation);
 
         System.out.println();
         System.out.println("Enter data to update the reservation");
         
         checkData = getCheckDates();
+        
+        LocalDate now = LocalDate.now();
+        
+        if (checkData.checkin.isBefore(now) || checkData.checkout.isBefore(now)) {
+        	throw new IllegalArgumentException("Error in reservation: Reservation dates for update must be future dates");
+        }
         
         reservation.updateDates(checkData.checkin, checkData.checkout);
         System.out.println(reservation);
@@ -36,6 +42,7 @@ public class Program {
     public static CheckData getCheckDates() {
         LocalDate checkin = readAndValidateDate("Check-in date (dd/MM/yyyy): ");
         LocalDate checkout = readAndValidateDate("Check-out date (dd/MM/yyyy): ");
+        validateDateIsAfter(checkin, checkout);
         return new CheckData(checkin, checkout);
     }
 
@@ -49,6 +56,12 @@ public class Program {
     public static void validateDate(String date) {
         if (!date.matches("^(3[01]|[12][0-9]|0?[1-9])/(1[0-2]|0?[1-9])/\\d{4}$")) {
             throw new IllegalArgumentException("Date format is invalid (dd/MM/yyyy)");
+        }
+    }
+
+    public static void validateDateIsAfter(LocalDate checkin, LocalDate checkout) {
+        if (!checkout.isAfter(checkin)) {
+            throw new IllegalArgumentException("Error in reservation: Check-out date must be after check-in date");
         }
     }
 

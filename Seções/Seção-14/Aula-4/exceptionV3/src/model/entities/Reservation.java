@@ -3,6 +3,8 @@ package model.entities;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import model.exceptions.DomainException;
+
 public class Reservation {
 
 	private Integer roomNumber;
@@ -13,7 +15,13 @@ public class Reservation {
     
 	public Reservation() {}
 
-	public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
+	public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) throws DomainException, NullPointerException {
+		if (roomNumber == null || checkin == null || checkout == null) {
+			throw new NullPointerException("Error: some of the data is null");
+		}
+		
+		validateIsAfter(checkin, checkout);
+		
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -39,9 +47,26 @@ public class Reservation {
 		return checkout.getDayOfYear() - checkin.getDayOfYear();
 	}
 	
-	public void updateDates(LocalDate checkin, LocalDate checkout) {
+	public void updateDates(LocalDate checkin, LocalDate checkout) throws DomainException {
+        validateIsAfter(checkin, checkout);
+        validateIsBefore(checkin, checkout);
+		
 		this.checkin = checkin;
 		this.checkout = checkout;
+	}
+	
+	private void validateIsAfter(LocalDate checkin, LocalDate checkout) throws DomainException {
+        if (!checkout.isAfter(checkin)) {
+            throw new DomainException("Error in reservation: Check-out date must be after check-in date");
+        }
+	}
+	
+	private void validateIsBefore(LocalDate checkin, LocalDate checkout) throws DomainException {
+        LocalDate now = LocalDate.now();
+		
+        if (checkin.isBefore(now) || checkout.isBefore(now)) {
+        	throw new DomainException("Error in reservation: Reservation dates for update must be future dates");
+        }
 	}
 
 	@Override
