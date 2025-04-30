@@ -34,9 +34,8 @@ public class Program {
 		
 //		Comparator<Product> comp = (p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
 		
-		list.sort((p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase()));
+		list.sort((p1, p2) -> p2.getPrice().compareTo(p1.getPrice()));
 		
-
 		for (Product p : list) {
 			System.out.println(p);
 		}
